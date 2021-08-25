@@ -1,0 +1,72 @@
+Method : 1 (My custom method)
+
+T/S O(n)/O(1)
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode L1=head;
+        ListNode dummy=new ListNode(-1);
+        ListNode newHead=dummy;
+        int count=0;
+        
+        if(head==null || head.next==null){
+            return head;
+        }
+        
+        while(head!=null){
+            if(head.val==L1.val){
+                head=head.next;
+                count++;
+            }else{
+                if(count>1){
+                    dummy.next=head;
+                }else{
+                    dummy.next=L1;
+                    dummy=dummy.next;
+                }
+                count=0;
+                L1=head;
+            }
+        }
+        
+        if(count>1){
+            dummy.next=null;
+        }
+        
+        return newHead.next;
+    }
+}
+
+
+
+Method : 2. Efficient Approach
+
+class Solution {
+    int delval = Integer.MIN_VALUE;
+    public ListNode deleteDuplicates(ListNode head) 
+    {
+        ListNode temp = new ListNode();
+        ListNode ans = temp;
+        while(head!=null)
+        {
+            if(head.next!=null&&head.val==head.next.val) delval = head.val;
+            if(head.val!=delval)
+            {
+                ans.next = new ListNode(head.val,null);
+               ans = ans.next; 
+            }
+            head = head.next;
+        }
+        return temp.next;
+    }
+}
