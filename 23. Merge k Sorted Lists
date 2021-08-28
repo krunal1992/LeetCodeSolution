@@ -1,0 +1,54 @@
+Method:1 (Naive Approach)
+
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        ListNode result=null;
+        if(lists.length<=0){
+            return result;
+        }
+        result=lists[0];
+        for(int index=1;index<lists.length;index++){
+            result=mergeSortedList(result, lists[index]);
+        }
+        return result;
+    }
+    
+    ListNode mergeSortedList(ListNode first, ListNode second){
+        ListNode result=new ListNode(-1);
+        ListNode head=result;
+        
+        while(first!=null && second!=null){
+            if(first.val<=second.val){
+                result.next=first;
+                first=first.next;
+            }else{
+                result.next=second;
+                second=second.next;
+            }
+            result=result.next;
+        }
+        if(first!=null){
+            result.next=first;
+            first=first.next;
+            result=result.next;
+        }
+        if(second!=null){
+            result.next=second;
+            second=second.next;
+            result=result.next;
+        }
+        return head.next;
+    }
+}
