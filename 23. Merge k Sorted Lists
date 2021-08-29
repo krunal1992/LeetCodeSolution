@@ -89,22 +89,30 @@ class Solution {
     }
     
     ListNode mergeListNode(ListNode first, ListNode second){
-        ListNode left=first;
-        ListNode head=left;
+        ListNode result=new ListNode(-1);
+        ListNode head=result;
+        
         while(first!=null && second!=null){
             if(first.val<=second.val){
+                result.next=first;
                 first=first.next;
             }else{
-                left.next=second;
-                left.next.next=first;
-                left=first;
+                result.next=second;
                 second=second.next;
             }
+            result=result.next;
+        }
+        if(first!=null){
+            result.next=first;
+            first=first.next;
+            result=result.next;
         }
         if(second!=null){
-            left.next=second;
+            result.next=second;
+            second=second.next;
+            result=result.next;
         }
-        return head;
+        return head.next;
     }
 }
 
