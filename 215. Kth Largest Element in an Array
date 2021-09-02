@@ -1,0 +1,62 @@
+Method : 1
+
+Using max heap or TreeMap(with reverse order - as treemap is always in ascending order)
+T/S : O(n+k logn) where logn for top from heap/O(n)
+
+
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        TreeMap<Integer, Integer> map = new TreeMap<Integer, Integer>(Collections.reverseOrder());
+        for(int index=0;index<nums.length;index++){
+            map.put(nums[index], map.getOrDefault(nums[index],0)+1);
+        }
+        
+        int count=0;
+        for(Integer key : map.keySet()){
+            count += map.get(key);
+            if(count >= k){
+                return key;
+            }
+        }
+        return 0;
+    }
+}
+
+
+Method : 2
+
+T/S : O(n) average case O(n^2) worst case/O(1)
+
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        //make k equal to start from end
+        k = nums.length - k;
+        
+        return quickSearch(nums, 0, nums.length-1, k);
+    }
+    
+    int quickSearch(int[] nums, int left, int right, int k){
+        int pivot = nums[right];
+        int p = left;
+        
+        for(int index=left;index<right;index++){
+            if(nums[index]<=pivot){
+                int temp=nums[index];
+                nums[index]=nums[p];
+                nums[p]=temp;
+                p++;
+            }
+        }
+        int temp = nums[p];
+        nums[p]=nums[right];
+        nums[right]=temp;
+        
+        if(p>k){
+            return quickSearch(nums, left, p-1, k);
+        }else if(p<k){
+            return quickSearch(nums, p+1, right, k);
+        }else{
+            return nums[p];
+        }
+    }
+}
