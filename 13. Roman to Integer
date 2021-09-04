@@ -1,0 +1,34 @@
+//Naive approach. - T/S - 
+//Efficient approach. - T/S - O(N)/O(1)
+//Use Hashmap to store mapping of roman string with integer.
+//check if 
+
+
+
+
+class Solution {
+    public int romanToInt(String s) {
+        HashMap<Character, Integer> map=new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+        
+        int result=0;
+        
+        for(int index=0;index<s.length();index++){
+            if((index+1) < s.length() && map.get(s.charAt(index)) < map.get(s.charAt(index+1))){
+                result -= map.get(s.charAt(index));
+            }else{
+                result += map.get(s.charAt(index));
+            }
+        }
+
+        return result;
+    }
+}
+
+
