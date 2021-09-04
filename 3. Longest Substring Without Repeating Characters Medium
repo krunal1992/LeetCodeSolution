@@ -1,7 +1,7 @@
 
 //Naive approach. - T/S - 
 //Efficient approach. - T/S -
-//
+//Sliding window protocol. Traverse all characters of string and find max length substring with unique characters.
 
 
 Method : 1
