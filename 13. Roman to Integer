@@ -1,7 +1,7 @@
 //Naive approach. - T/S - 
 //Efficient approach. - T/S - O(N)/O(1)
 //Use Hashmap to store mapping of roman string with integer.
-//check if 
+
 
 
 
@@ -20,6 +20,7 @@ class Solution {
         int result=0;
         
         for(int index=0;index<s.length();index++){
+            //check if current integer is less than next [special case if number is 4,9,99 etc...]
             if((index+1) < s.length() && map.get(s.charAt(index)) < map.get(s.charAt(index+1))){
                 result -= map.get(s.charAt(index));
             }else{
