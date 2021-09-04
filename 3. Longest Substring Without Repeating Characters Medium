@@ -1,7 +1,11 @@
 
 //Naive approach. - T/S - 
-//Efficient approach. - T/S -
-//Sliding window protocol. Traverse all characters of string and find max length substring with unique characters.
+//Efficient approach. - T/S - O(N)/O(1)
+//Sliding window protocol. 
+//Loop through the string add the character to the set
+if the set contains the input character
+* --> go ahead and remove the left character from the set and increment the left pointer to shrink the window
+* --> Retain the max between the max and window length
 
 
 Method : 1
