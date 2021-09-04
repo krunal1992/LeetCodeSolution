@@ -1,4 +1,7 @@
-Hashmap solution
+//Naive approach. - T/S - O(N^2)/O(1)
+//Efficient approach. - T/S - O(N)/O(N)
+//Use Hashmap to store previously encounter element and check if [target - current element] is found in map or not.
+
 
 class Solution {
     public int[] twoSum(int[] nums, int target) {
