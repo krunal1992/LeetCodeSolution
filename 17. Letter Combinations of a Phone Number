@@ -28,3 +28,33 @@ class Solution {
         return result;
     }
 }
+
+
+
+
+Method : 2 BackTracking
+
+
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        ArrayList<String> result = new ArrayList<>();
+        String map[] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        
+        if(digits.length() == 0){
+            return result;
+        }
+    
+        return backTrack(0, "", result, digits, map);
+    }
+    
+    public ArrayList<String> backTrack(int i, String currentStr, ArrayList<String> result, String digits, String[] map){
+        if(currentStr.length()==digits.length()){
+            result.add(currentStr);
+            return result;
+        }
+        for(char c : map[digits.charAt(i) - '0'].toCharArray()){
+            result = backTrack(i + 1, currentStr + c, result, digits, map);
+        }
+        return result;
+    }
+}
