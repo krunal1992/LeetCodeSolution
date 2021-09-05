@@ -1,6 +1,9 @@
+//Naive approach. - T/S - O(N•4^N)/
+//Efficient approach. - T/S - O(N)/O(1)
+//Use Hashmap to store mapping of roman string with integer.
 
 
-
+Method : 1 Naive Approach
 
 class Solution {
     public List<String> letterCombinations(String digits) {
