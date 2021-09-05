@@ -1,0 +1,24 @@
+
+
+class Solution {
+    public int arrayNesting(int[] nums) {
+        int count=0;
+        if(nums.length == 0){
+            return count;
+        }
+        for(int index=0;index<nums.length;index++){
+            count = Math.max(count, scanDigit(nums, index, 0));
+        }
+        return count;
+    }
+    int scanDigit(int[] nums, int digit, int count){
+        if(digit>nums.length || nums[digit]==-1){
+            return count;
+        }else{
+            count++;
+            int nextDigit=nums[digit];
+            nums[digit]=-1;
+            return scanDigit(nums, nextDigit, count);
+        }
+    }
+}
