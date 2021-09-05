@@ -1,0 +1,27 @@
+
+
+
+
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        ArrayList<String> result = new ArrayList<>();
+        String map[] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        
+        if(digits.length() == 0){
+            return result;
+        }
+        
+        result.add("");
+        
+        for(char d : digits.toCharArray()){
+            ArrayList<String> newRes = new ArrayList<>();
+            for(String s : result){
+            for(char c : map[d - '0'].toCharArray()){
+                newRes.add(s + c);
+            }}
+            result = newRes;
+        }
+        
+        return result;
+    }
+}
