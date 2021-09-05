@@ -1,3 +1,7 @@
+ 
+//Naive approach. - T/S - 
+//Efficient approach. - T/S - O(N)/O(1)
+//Compare first two string from array and get matched substring and repeat same process for all other string with newly substring.
 
 
 
