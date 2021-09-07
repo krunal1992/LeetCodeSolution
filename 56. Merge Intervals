@@ -1,4 +1,6 @@
-
+//Naive approach. - T/S - 
+//Efficient approach. - T/S - O(N•logN)/O(N) or O(logN)
+//Use Hashmap to store mapping of roman string with integer.
 
 class Solution {
     public int[][] merge(int[][] intervals) {
