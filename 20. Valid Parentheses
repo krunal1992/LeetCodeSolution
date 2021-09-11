@@ -1,3 +1,6 @@
+//Naive approach. - T/S - O(N)/O(N)
+//Efficient approach. - T/S - 
+//Use stack to track the parentheses and remove from stack if found close brackets.
 
 
 
