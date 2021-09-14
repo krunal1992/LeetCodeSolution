@@ -1,6 +1,10 @@
 
+//Naive approach. - T/S - 
+//Efficient approach. - T/S - 
+//
 
 
+//First approach try by me...
 
 class Solution {
     public String addBinary(String a, String b) {
