@@ -1,0 +1,54 @@
+
+// T/S : O(N)/O(N)
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int targetCount = nums.length / 2;
+        
+        for(int num : nums){
+            map.put(num, map.getOrDefault(num, 0) + 1);
+        }
+        
+        for(int key : map.keySet()){
+            if(map.get(key) > targetCount){
+                return key;
+            }
+        }
+        
+        return -1;
+    }
+}
+
+// T/S : O(NlogN)/O(1)
+// Sort array then check middle element
+// As if we want elements length greater than n/2 then in any case (if left or right part have element) the middle element is 
+// alwaes lies in both part...  
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        
+        Arrays.sort(nums);
+    
+        return nums[nums.length/2];
+    }
+}
+
+//Boyer-Moore Voting Algorithm
+// T/S : O(N)/O(1)
+
+class Solution {
+    public int majorityElement(int[] nums) {
+        int count = 0;
+        int candidate = -1;
+        
+        for(int index=0;index<nums.length;index++){
+            if(count == 0){
+                candidate = nums[index];
+            }
+            count += ((nums[index] == candidate) ? 1 : -1);
+        }
+        return candidate;
+    }
+}
+
