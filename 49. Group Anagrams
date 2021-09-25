@@ -1,0 +1,30 @@
+// T/S : O(NlogN)/O(N)
+//Use hashmap to store group of similar anagram - key will be anagram sorted string....
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> result = new ArrayList<List<String>>();
+        
+        HashMap<String, List<String>> mapRes = new HashMap<>();
+        
+        for(int index=0;index<strs.length;index++){
+            char[] array = strs[index].toCharArray();
+            Arrays.sort(array);
+            String sortedStr = new String(array);
+            
+            if(mapRes.containsKey(sortedStr)){
+                ((List<String>)mapRes.get(sortedStr)).add(strs[index]);
+            }else{
+                List<String> strList = new ArrayList<String>();
+                strList.add(strs[index]);
+                mapRes.put(sortedStr, strList);
+            }
+        }
+        
+        for(String key : mapRes.keySet()){
+            result.add(mapRes.get(key));
+        }
+        
+        return result;
+    }
+}
