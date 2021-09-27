@@ -1,0 +1,15 @@
+// T/S : O(N)/O(1)
+// So the login here is to get the sum of number till the length of array uaing formula (n*(n+1)/2 and also get sum of all the elements
+and subtact the sum from total sum to het the remain value.
+
+class Solution {
+    public int missingNumber(int[] nums) {
+        int n = nums.length;
+        int sum = (n * (n + 1)) / 2;
+        int numSum = 0;
+        for(int index=0;index<nums.length;index++){
+            numSum += nums[index];
+        }
+        return sum - numSum;
+    }
+}
