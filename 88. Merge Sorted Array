@@ -21,3 +21,22 @@ class Solution {
         }
     }
 }
+
+//reduce one loop of checking first array as it is alredy sorted
+
+// Fill the array from end
+int l=m-1;
+int r=n-1;
+for(int i=m+n-1;i>=0;i--)
+{
+if(l>=0 && r>=0 && (nums1[l]>nums2[r]))
+{
+nums1[i] = nums1[l];
+l--;
+}
+else if(r>=0)
+{
+nums1[i] = nums2[r];
+r--;
+}
+}
