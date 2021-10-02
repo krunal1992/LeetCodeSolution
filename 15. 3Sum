@@ -1,0 +1,36 @@
+//Use single loop and 2 pointer approach to get solution
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> map = new ArrayList();
+        Arrays.sort(nums);
+        for(int index=0;index<nums.length;index++){
+            if(index>0 && nums[index] == nums[index-1]){
+                continue;
+            }
+            int l=index+1;
+            int r=nums.length-1;
+            int threeSum=0;
+            while(l<r){
+                threeSum = nums[index] + nums[l] + nums[r];
+                if(threeSum > 0){
+                    r--;
+                }else if(threeSum < 0){
+                    l++;
+                }else{
+                    List<Integer> data= new ArrayList();
+                    data.add(nums[index]);
+                    data.add(nums[l]);
+                    data.add(nums[r]);
+                    map.add(data);
+                    l++;
+                    while(l<r && nums[l] == nums[l-1]){
+                        l++;
+                    }
+                }
+            }
+        }
+        
+        return map;
+    }
+}
