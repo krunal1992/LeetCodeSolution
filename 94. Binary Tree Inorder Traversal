@@ -1,0 +1,25 @@
+
+//Simple recursive approach 
+
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        return inorder(root, new ArrayList<Integer>());
+    }
+    
+    public List<Integer> inorder(TreeNode root, List<Integer> listRes){
+        if(root==null){
+            return listRes;
+        }
+        if(root.left != null){
+            listRes = inorder(root.left, listRes);
+        }
+        listRes.add(root.val);
+        if(root.right != null){
+            listRes = inorder(root.right, listRes);
+        }
+        return listRes;
+    }
+}
+
+//Morris Traversal
+
