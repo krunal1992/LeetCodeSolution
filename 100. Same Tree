@@ -16,4 +16,48 @@ class Solution {
     }
 }
 
-//
+//Without Recursion
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        Queue<TreeNode> qHolder = new LinkedList<TreeNode>();
+           
+        qHolder.add(p);
+        qHolder.add(q);
+        
+        while(!qHolder.isEmpty()){
+            TreeNode newP = qHolder.poll();
+            TreeNode newQ = qHolder.poll();
+            
+            if(newP == null && newQ == null){
+                continue;
+            }else if(newP == null || newQ == null || newP.val != newQ.val){
+                return false;
+            }
+            
+            qHolder.add(newP.left);
+            qHolder.add(newQ.left);
+
+            qHolder.add(newP.right);
+            qHolder.add(newQ.right);
+        }
+        
+        return true;
+    }
+    
+}
