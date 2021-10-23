@@ -1,4 +1,6 @@
 
+//T/S - O(N)/O(N)
+//Use queue to store the nodes. For identify single level nodes use length of the queue.
 
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
@@ -31,3 +33,29 @@ class Solution {
         return res;
     }
 }
+
+
+
+//Recursive approach - Here using actual result array to identify the level of the tree.
+
+
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        levelOrderRec(root, 0, result);
+        return result;
+    }   
+    
+    void levelOrderRec(TreeNode root, int level, List<List<Integer>> result){
+        if(root == null){
+            return;
+        }
+        if(level == result.size()){
+            result.add(new ArrayList<Integer>());
+        }
+        result.get(level).add(root.val);
+        levelOrderRec(root.left, level + 1, result);
+        levelOrderRec(root.right, level + 1, result);
+    }
+}
+
