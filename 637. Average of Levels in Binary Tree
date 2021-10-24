@@ -1,0 +1,37 @@
+
+//Approach is to do sum of all the nodes at the same level and after traverse all the node at the same level do the average of the all the nodes
+//NOTE : FOR STORE SUM USE THE DOUBLE - AS INT EXCEED THE LIMIT OF THE STORE SUM RESULT AND GET THE ERROR FOR LARGE NUMBER.....
+
+class Solution {
+    public List<Double> averageOfLevels(TreeNode root) {
+        List<Double> result = new ArrayList<>();
+        
+        if(root == null){
+            return result;
+        }
+        
+        Queue<TreeNode> queue = new LinkedList<>();
+        
+        queue.offer(root);
+        
+        e(!queue.isEmpty()){
+            double sum = 0;
+            int level = queue.size();
+            
+            for(int index=0;index<level;index++){
+                TreeNode node = queue.poll();
+                sum += (double)node.val;
+                
+                if(node.left != null){
+                    queue.offer(node.left);
+                }
+                
+                if(node.right != null){
+                    queue.offer(node.right);
+                }
+            }
+            result.add(sum / level);
+        }
+        return result;
+    }
+}
