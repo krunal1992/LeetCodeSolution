@@ -1,0 +1,29 @@
+
+// Use binary search to get the solution in O(log n) time.
+// Check for odd number of the arrays to identify in which part of the array single element should be exists.
+
+
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+        if(nums.length == 1) return nums[0];
+        
+        int left = 0;
+        int right = nums.length - 1;
+        
+        while(left < right){
+            int mid = left + (right - left) / 2;
+            
+            if(nums[mid] == nums[mid + 1]){
+                mid = mid - 1;
+            }
+            
+            if((mid - left + 1) % 2 != 0){
+                right = mid;
+            }else{
+                left = mid + 1;
+            }
+        }
+        
+        return nums[left];
+    }
+}
