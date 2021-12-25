@@ -1,0 +1,38 @@
+
+/*****************
+num array consist of 31251 integers.
+Each integer represents 32 integers
+num[0] represents numbers from 0-31
+num[1] represents numbers from 32-63
+so on....
+******************/
+
+class MyHashSet {
+    
+    int array[];
+
+    public MyHashSet() {
+        array = new int[31251];
+    }
+    
+    public int getId(int key){
+        return key/32;
+    }
+    
+    public int getMask(int key){
+        key = key%32;
+        return (1<<key);
+    }
+    
+    public void add(int key) {
+        array[getId(key)] |= getMask(key);
+    }
+    
+    public void remove(int key) {
+        array[getId(key)] &= (~getMask(key));
+    }
+    
+    public boolean contains(int key) {
+        return (array[getId(key)]&getMask(key)) != 0;
+    }
+}
